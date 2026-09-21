@@ -1,0 +1,16 @@
+Moon Board Version 1 
+
+Most of the goals and feedbacks of this board are the same as the Planet Board since they were both designed together.
+I will only keep here what will be relevent after taking into account the feedback for the Planet Board.
+
+Goals: 
+- The main goal of this board is to be able to get the absolute angle of a motor shaft via a diametric ring magnet in side-shaft position.
+- The second goal is to make this board modular, which can be used in various robots (ie. RC car, drone, etc.).
+- The third goal is to make the board as small as possible.
+
+Feedback:
+- The board lacks mounting pins
+- The board lacks LEDs to show its state (3.3V, VCC, Motor driver fault)
+- Lacks more silkscreen to avoid having to look at design files
+- Lacks some protections (Local PTC fuse, TVS diode)
+- Add test pins since the chosen connectors can't be gripped, so only the MagAlpha here

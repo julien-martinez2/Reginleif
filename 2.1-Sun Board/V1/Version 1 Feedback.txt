@@ -1,0 +1,15 @@
+Sun Board Version 1 
+
+This board was designed after the Planet and Moon ones, and already resolves some of their issues.
+
+Goals: 
+- The main goal of this board is to be able to supervise up to 5 Planet Boards.
+- The second goal is to make this board modular, which can be used in various robots (ie. RC car, drone, etc.).
+- The third goal is to make the board as small as possible, but still big enough for an RPI Zero 2 W to fit on.
+
+Feedback:
+- The board uses the same mounting pins for the RPI and the mechanical structure
+- The board lacks LEDs to show its state (3.3V, VCC, Planet Board load)
+- Lacks more silkscreen to avoid having to look at design files
+- Add test pins since the chosen connectors can't be gripped, so mainly the STM32, BNO085/86 and some connectors
+- The chosen SPDT switch is too small
