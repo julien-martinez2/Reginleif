@@ -1,0 +1,18 @@
+Planet Board Version 1 
+
+Goals: 
+- The main goal of this board is to be able to control a whole leg with close control (4 motors and 4 angle sensors).
+- The second goal is to make this board modular, which can be used in various robots (ie. RC car, drone, etc.).
+- The third goal is to make the board as small as possible.
+
+Feedback:
+- The board lacks mounting pins
+- The board lacks LEDs to show its state (3.3V, VCC, Motor driver fault)
+- Lacks more silkscreen to avoid having to look at design files
+- Lacks some protections (Local PTC fuse, TVS diode)
+- Put two of the angle sensors (currently on the moon boards) directly on the planet board
+- Add test pins since the chosen connectors can't be gripped, and even more the STM32
+- Too many vias near the center of the board
+- Power spread on the PCB
+
+Most of these issues come from trying to make the board smaller.

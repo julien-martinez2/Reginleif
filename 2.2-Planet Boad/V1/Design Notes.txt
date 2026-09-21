@@ -1,0 +1,58 @@
+Sun Board V1 Design Notes
+
+This board is designed to distribute power and supervise up to 5 Planet Boards by communicating via UART.
+It has an SPST switch to power ON/OFF the whole robot.
+
+Power Supply
+The maximum voltage in the robot is 12.6V (LiPo 3S battery), so all the components on the power rail are rated for 25V or more.
+
+The maximum current pulled by the robot is around 8A (considering that all the motors are stalling, which shouldn't happen and some software protections will be used). 
+The Sun Board can handle up to 15A on the power rail, 2A for the 5V rail (RPI) and 2A for the 3.3V rail.
+
+The eFuse used is a TPS259827, with the following configuration:
+Undervoltage protection at 11V to protect the battery
+Circuit Breaker at 15A
+Current monitoring giving analog value from 0 to 2.97V (0 to 15A)
+Lowest slew rate (0.68V/ms)
+
+STM32
+The model used is a STM32G031G8U6, same as the Planet Boards to keep the BOM consistent.
+The specifications of this model has are : 
+6 timers
+2 SPI bus
+2 UART bus
+Real-Time Clock
+28 pins including 26 GPIO and 15 ADC channels
+14 External Interrupts (not on all pins) with 4 levels
+Low-power modes
+64 MHz CPU frequency
+
+A useful function of STM32s here is that they can program, reset and boot each other via UART.
+
+The Sun Board still includes a 4-pin header to program via SWD
+
+Finally, some pins are compatible with 5V (reception only), which are nice to make the architecture even more modular.
+
+Planet Board Connexion
+The Sun Board is connected to the Planet Boards via 5 wires :
+- 3.3V
+- VCC
+- GND
+- TX
+- RX
+
+Since each Planet Board can pull up to 2A, the connectors and wires are sized for a 3A constant load.
+
+The Sun Board's STM32 communicates with the Planet Boards' STM32s via UART.
+Only one resistor is used on the Sun Board to keep a modular structure and since the architecture is closer to a Star topology than a Chain one 
+
+BNO085
+To balance the robot, a BNO085 is used as is has almost no drift.
+The communication to the STM32 is done via SPI bus.
+
+RPI Zero 2 W
+The RPI handles the communication to the computer and camera feedback.
+It rests on a female pin header and M2 standoffs and communicates with the STM32 via UART.
+
+
+
